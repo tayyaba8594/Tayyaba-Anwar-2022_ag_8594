@@ -1,0 +1,796 @@
+Tayyaba2022-ag-8594
+Ayesha 2022-ag-8576
+Aqsa 2022-ag-8579
+Hina 2022-ag-8626
+Sameen 2022-ag-8637
+Form 1
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            f2.Show();
+          
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           
+          
+
+        }
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+form 2
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string username = textBox1.Text;
+            string Password=textBox2.Text;
+            if(username==("admin")&&Password==("1234"))
+            {
+                Form3 f3 = new Form3();
+                f3.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Invalid Username or Password","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this .Close();
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Form8 f8=new Form8();
+            f8.Show();  
+            this.Hide();
+        }
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Form 3
+System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class Form3 : Form
+    {
+        public Form3()
+        {
+            InitializeComponent();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form4 f4=new Form4();
+            f4.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form5 f5=new Form5();   
+            f5.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+        Form6 f6=new Form6();
+            f6.Show();
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 f2=new Form2();
+            f2.Show();
+           this.Hide();
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Form 4
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.OleDb;
+
+
+namespace WindowsFormsApp1
+{
+    public partial class Form4 : Form
+    {
+        OleDbConnection conn;
+        OleDbCommand cmd;
+        OleDbDataAdapter adapter;
+        OleDbDataReader reader;
+
+        DataTable dt;
+        public Form4()
+        {
+            InitializeComponent();
+        }
+        void GetBooking()
+        {
+            conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Marriage.accdb");
+            dt = new DataTable();
+            adapter = new OleDbDataAdapter("SELECT * FROM Booking", conn);
+            conn.Open();
+            adapter.Fill(dt);
+            dataGridView1.DataSource = dt;
+            conn.Close();
+        }
+
+
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            GetBooking();
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox4.Enabled = true;
+            textBox5.Enabled = true;
+        }
+
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                textBox4.Enabled = true;
+                textBox5.Enabled = true;
+            }
+            else
+            {
+                textBox4.Enabled = false;
+                textBox5.Enabled = false;
+                textBox4.Text = "";
+                textBox5.Text = "";
+            }
+
+        }
+
+        private void checkBox2_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
+            {
+                textBox6.Enabled = true;
+                textBox7.Enabled = true;
+            }
+            else
+            {
+                textBox6.Enabled = false;
+                textBox7.Enabled = false;
+                textBox6.Text = "";
+                textBox7.Text = "";
+            }
+
+        }
+
+        private void checkBox3_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked == true)
+            {
+                textBox1.Enabled = true;
+                textBox8.Enabled = true;
+            }
+            else
+            {
+                textBox1.Enabled = false;
+                textBox8.Enabled = false;
+                textBox1.Text = "";
+                textBox8.Text = "";
+            }
+
+        }
+
+        private void checkBox4_CheckStateChanged(object sender, EventArgs e)
+        {
+           
+            
+
+        }
+
+        private void checkBox8_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox8.Checked == true)
+            {
+                textBox18.Enabled = true;
+                textBox17.Enabled = true;
+            }
+            else
+            {
+                textBox18.Enabled = false;
+                textBox17.Enabled = false;
+                textBox18.Text = "";
+                textBox17.Text = "";
+            }
+
+        }
+
+        private void checkBox7_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox7.Checked == true)
+            {
+                textBox16.Enabled = true;
+                textBox15.Enabled = true;
+            }
+            else
+            {
+                textBox16.Enabled = false;
+                textBox15.Enabled = false;
+                textBox16.Text = "";
+                textBox15.Text = "";
+            }
+
+        }
+
+        private void checkBox6_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox6.Checked == true)
+            {
+                textBox14.Enabled = true;
+                textBox13.Enabled = true;
+            }
+            else
+            {
+                textBox14.Enabled = false;
+                textBox13.Enabled = false;
+                textBox14.Text = "";
+                textBox13.Text = "";
+            }
+
+        }
+
+        private void checkBox5_CheckStateChanged(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int ColdDrink = 0, Slush = 0, Shak = 0, Juice = 0;
+            if (checkBox1.Checked == true && textBox4.Text == "" && textBox5.Text == "")
+            {
+                MessageBox.Show("Enter ColdDrink Quantity");
+            }
+            else
+            {
+                ColdDrink = Convert.ToInt32(textBox4.Text) * Convert.ToInt32(textBox5.Text);
+            }
+            if (checkBox2.Checked == true && textBox6.Text == "" && textBox7.Text == "")
+            {
+                MessageBox.Show("Enter Slush Quantity");
+            }
+            else
+            {
+                Slush = Convert.ToInt32(textBox6.Text) * Convert.ToInt32(textBox7.Text);
+            }
+            if (checkBox3.Checked == true && textBox1.Text == "" && textBox8.Text == "")
+            {
+                MessageBox.Show("Enter Shak Quantity");
+            }
+            else
+            {
+                Shak = Convert.ToInt32(textBox1.Text) * Convert.ToInt32(textBox8.Text);
+            }
+            int Drinks = ColdDrink + Shak + Slush + Juice;
+            label8.Text = Convert.ToString(Drinks);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int Mutton = 0, Chicken = 0, Fish = 0, Biryani = 0;
+            if (checkBox8.Checked == true && textBox18.Text == "" && textBox17.Text == "")
+            {
+                MessageBox.Show("Enter Mutton Quantity");
+            }
+            else
+            {
+                Mutton = Convert.ToInt32(textBox18.Text) * Convert.ToInt32(textBox17.Text);
+            }
+            if (checkBox7.Checked == true && textBox16.Text == "" && textBox15.Text == "")
+            {
+                MessageBox.Show("Enter Chicken Quantity");
+            }
+            else
+            {
+                Chicken = Convert.ToInt32(textBox16.Text) * Convert.ToInt32(textBox15.Text);
+            }
+            if (checkBox6.Checked == true && textBox14.Text == "" && textBox13.Text == "")
+            {
+                MessageBox.Show("Enter Fish Quantity");
+            }
+            else
+            {
+                Fish = Convert.ToInt32(textBox14.Text) * Convert.ToInt32(textBox13.Text);
+            }
+          
+            int Dishes = Mutton + Chicken + Fish + Biryani;
+            label9.Text = Convert.ToString(Dishes);
+        }
+        private void GetcomboBox2()
+        {
+
+
+        }
+        private void GetcomboBox1()
+        {
+        }
+        private void fetchtextbox2()
+        {
+
+
+        }
+
+        private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            fetchtextbox2();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            comboBox1.Text = "";
+            textBox21.Text = "";
+            textBox20.Text = "";
+            textBox22.Text = "";
+            textBox19.Text = "";
+
+            textBox2.Text = "";
+
+
+            textBox3.Text = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           string query = "INSERT INTO  Booking(Date,Time,NoOfPerson,Name,OtherCharges,Total,Advance,Balance,Calculate)" +
+          "VALUES (@date,@time,@noofperson,@name,@othercharges,@total,@advance,@balance,@calculate)";
+            cmd = new OleDbCommand(query, conn);
+            cmd.Parameters.AddWithValue("@date", dateTimePicker1.Text);
+            cmd.Parameters.AddWithValue("@time",comboBox1.Text);
+            cmd.Parameters.AddWithValue("@calculate ",label8.Text);
+            cmd.Parameters.AddWithValue("@calculate",label9.Text);
+           cmd.Parameters.AddWithValue("@noofperson", textBox3.Text);
+            cmd.Parameters.AddWithValue("@name", textBox2.Text);
+         cmd.Parameters.AddWithValue("@othercharges", textBox19.Text);
+           cmd.Parameters.AddWithValue("@tatal", textBox21.Text);
+            cmd.Parameters.AddWithValue("@advance", textBox20.Text);
+            cmd.Parameters.AddWithValue("@balance", textBox22.Text);
+            
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("INSERT SUCCESSFULLY");
+            GetBooking();
+            conn.Close();
+        }
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////           
+
+form 6
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.OleDb;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+namespace WindowsFormsApp1
+{
+    public partial class Form6 : Form
+    {
+        OleDbConnection conn;
+        OleDbCommand cmd;
+        OleDbDataAdapter adapter;
+        OleDbDataReader reader;
+        DataTable dt;
+       
+        
+        public Form6()
+        {
+            InitializeComponent();
+        }
+        void GetCustomer()
+        {
+            
+            conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Marriage.accdb");
+            dt = new DataTable();
+            adapter = new OleDbDataAdapter("SELECT *FROM Customer", conn);
+            adapter.Fill(dt);
+            conn.Open();
+            dataGridView1.DataSource = dt;
+            conn.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            string query = "INSERT INTO Customer(CusName, CusAddress, CusPhone) VALUES (@cusname, @cusaddress, @cusphone)";
+            using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb"))
+            {
+                using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@cusname", textBox8.Text);
+                    cmd.Parameters.AddWithValue("@cusaddress", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@cusphone", textBox2.Text);
+                    
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("INSERT SUCCESSFULLY");
+                    GetCustomer();
+
+                }
+            }
+        }
+
+                private void Form6_Load(object sender, EventArgs e)
+        {
+            GetCustomer();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            String query = "UPDATE Customer SET CusName=@cusname,CusAddress=@cusaddress,CusPhone=@cusphone WHERE CusName=@cusname";
+            cmd = new OleDbCommand(query, conn);
+            cmd.Parameters.AddWithValue("@cusname", textBox8.Text);
+            cmd.Parameters.AddWithValue("@cusaddresss", textBox1.Text);
+            cmd.Parameters.AddWithValue("@cusphone", textBox2.Text);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("UPDATE SUCCESSFULLY");
+            GetCustomer();
+            conn.Close();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            string query = "DELETE FROM Customer WHERE Id=@id";
+            using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Marriage.accdb"))
+            {
+                using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@cusname", textBox8.Text);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("DELETE SUCCESSFULLY");
+                    GetCustomer();
+                }
+
+            }
+        }
+
+            private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox8.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBox8.Text = "";
+            textBox1.Text = "";
+            textBox2.Text = "";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+                
+                this.Close();
+            }
+        }
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Form 7
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+
+namespace WindowsFormsApp1
+{
+    public partial class Form7 : Form
+    {
+        OleDbConnection conn;
+        OleDbCommand cmd;
+        OleDbDataAdapter adapter;
+        OleDbDataReader reader;
+        DataTable dt;
+
+
+        public Form7()
+        {
+            InitializeComponent();
+        }
+
+        private void Form7_Load(object sender, EventArgs e)
+        {
+            GetStaff();
+
+        }
+
+        void GetStaff()
+        {
+            conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Marriage.accdb");
+            dt = new DataTable();
+            adapter = new OleDbDataAdapter("SELECT * FROM Staff", conn);
+            conn.Open();
+            adapter.Fill(dt);
+            dataGridView2.DataSource = dt;
+            conn.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string query = "INSERT INTO Staff(StaffName,StaffPhone,StaffGender,Password)" +
+            "VALUES (@staffname, @staffphone, @staffgender, @password)";
+            cmd = new OleDbCommand(query, conn);
+            cmd.Parameters.AddWithValue("@staffname", textBox8.Text);
+            cmd.Parameters.AddWithValue("@staffphone", textBox1.Text);
+            cmd.Parameters.AddWithValue("@staffgender", textBox2.Text);
+            cmd.Parameters.AddWithValue("@password", textBox3.Text);
+          
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("INSERT SUCCESSFULLY");
+            GetStaff();
+            conn.Close();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string query = "UPDATE Staff SET StaffPhone=@staffphone, StaffGender=@staffgender, [Password]=@password WHERE StaffName=@staffname";
+            using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Marriage.accdb"))
+            {
+                using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@staffname", textBox8.Text);
+                    cmd.Parameters.AddWithValue("@staffphone", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@staffgender", textBox2.Text);
+                    cmd.Parameters.AddWithValue("@password", textBox3.Text);
+                   
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("UPDATE SUCCESSFULLY");
+                    GetStaff();
+                }
+            }
+
+
+
+
+                }
+
+                private void button3_Click(object sender, EventArgs e)
+        {
+            String query = "DELETE FROM Staff WHERE Id=@id";
+
+            using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb")) ;
+            {
+                using (OleDbCommand cmd = new OleDbCommand(query, conn)) ;
+                {
+                    cmd.Parameters.AddWithValue("@staffname", textBox8.Text);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Delete Successfully");
+                    GetStaff();
+                }
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBox8.Text = "";
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+        }
+
+        private void dataGridView2_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox8.Text = dataGridView2.CurrentRow.Cells[0].Value.ToString();
+            textBox1.Text = dataGridView2.CurrentRow.Cells[1].Value.ToString();
+            textBox2.Text = dataGridView2.CurrentRow.Cells[2].Value.ToString();
+            textBox3.Text = dataGridView2.CurrentRow.Cells[3].Value.ToString();
+        }
+    }
+    
+}
+    
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    form8
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class Form8 : Form
+    {
+        public Form8()
+        {
+            InitializeComponent();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(textBox3.Text=="")
+            {
+                MessageBox.Show("Enter the admin password");
+            }
+            else if (textBox3.Text == "Ayesha") 
+            {
+                Form7 f7=new Form7();
+                f7.Show();
+                this.Hide();
+            }
+             else
+            {
+                MessageBox.Show("wrong Password***Contact the Admin of this System");
+            }
+
+
+         
+
+        }
+
+        private void Form8_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    
+
